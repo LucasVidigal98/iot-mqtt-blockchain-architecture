@@ -5,11 +5,16 @@
   "scripts": {
     "install:shared": "npm --prefix packages/shared install",
     "install:sensors": "npm --prefix apps/sensor-simulator install",
-    "install:all": "npm run install:shared && npm run install:sensors",
+    "install:backend": "npm --prefix apps/backend install",
+    "install:all": "npm run install:shared && npm run install:sensors && npm run install:backend",
     "build:shared": "npm --prefix packages/shared run build",
     "build:sensors": "npm --prefix apps/sensor-simulator run build",
-    "build": "npm run build:shared && npm run build:sensors",
+    "build:backend": "npm --prefix apps/backend run build",
+    "build": "npm run build:shared && npm run build:sensors && npm run build:backend",
     "dev:sensors": "npm --prefix apps/sensor-simulator run dev",
-    "start:sensors": "npm --prefix apps/sensor-simulator run start"
+    "dev:backend": "npm --prefix apps/backend run dev",
+    "start:sensors": "npm --prefix apps/sensor-simulator run start",
+    "start:backend": "npm --prefix apps/backend run start",
+    "test:backend": "npm --prefix apps/backend run test"
   }
 }
