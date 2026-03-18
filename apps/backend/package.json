@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@iot/shared": "file:../../packages/shared",
+    "ethers": "^6.15.0",
     "mongodb": "^6.18.0",
     "mqtt": "^5.13.1"
   },

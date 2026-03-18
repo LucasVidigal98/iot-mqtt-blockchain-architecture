@@ -15,7 +15,7 @@ export interface SensorRepository {
     update: {
       hash: string;
       processingStatus: ProcessingStatus;
-      ledgerRefMock: string | null;
+      ledgerTxId: string | null;
       processingError: string | null;
       updatedAt: string;
     }

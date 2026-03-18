@@ -12,7 +12,7 @@ export interface PersistedSensorRecord {
   receivedAt: string;
   hash: string | null;
   processingStatus: ProcessingStatus;
-  ledgerRefMock: string | null;
+  ledgerTxId: string | null;
   processingError: string | null;
   updatedAt: string;
 }

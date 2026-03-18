@@ -28,7 +28,7 @@ export async function processSensorMessage(
     await dependencies.repository.markProcessed(record.id, {
       hash,
       processingStatus: "ledger_committed",
-      ledgerRefMock: ledgerResult.txId,
+      ledgerTxId: ledgerResult.txId,
       processingError: null,
       updatedAt: new Date().toISOString()
     });
@@ -44,7 +44,7 @@ export async function processSensorMessage(
     await dependencies.repository.markProcessed(record.id, {
       hash,
       processingStatus: "ledger_failed",
-      ledgerRefMock: null,
+      ledgerTxId: null,
       processingError: errorMessage,
       updatedAt: new Date().toISOString()
     });

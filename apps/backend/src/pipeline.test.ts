@@ -13,7 +13,7 @@ class InMemoryRepository implements SensorRepository {
       receivedAt: string;
       hash: string | null;
       processingStatus: string;
-      ledgerRefMock: string | null;
+      ledgerTxId: string | null;
       processingError: string | null;
     }
   >();
@@ -35,7 +35,7 @@ class InMemoryRepository implements SensorRepository {
       receivedAt,
       hash: null,
       processingStatus: "stored",
-      ledgerRefMock: null,
+      ledgerTxId: null,
       processingError: null
     });
 
@@ -47,7 +47,7 @@ class InMemoryRepository implements SensorRepository {
     update: {
       hash: string;
       processingStatus: "stored" | "ledger_committed" | "ledger_failed" | "invalid_message";
-      ledgerRefMock: string | null;
+      ledgerTxId: string | null;
       processingError: string | null;
       updatedAt: string;
     }
@@ -60,7 +60,7 @@ class InMemoryRepository implements SensorRepository {
 
     record.hash = update.hash;
     record.processingStatus = update.processingStatus;
-    record.ledgerRefMock = update.ledgerRefMock;
+    record.ledgerTxId = update.ledgerTxId;
     record.processingError = update.processingError;
   }
 }
@@ -108,7 +108,7 @@ describe("processSensorMessage", () => {
     const record = repository.inserted.get(result.recordId ?? "");
     assert.ok(record);
     assert.equal(record?.processingStatus, "ledger_committed");
-    assert.equal(record?.ledgerRefMock, "mock-tx-1");
+    assert.equal(record?.ledgerTxId, "mock-tx-1");
     assert.equal(record?.hash, result.hash);
   });
 

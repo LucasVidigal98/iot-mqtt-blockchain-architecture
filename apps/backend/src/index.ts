@@ -1,4 +1,5 @@
 import { loadConfig } from "./config.js";
+import { IntegrityLedgerEthereumAdapter } from "./integrity-ledger-ethereum.js";
 import { IntegrityLedgerMockAdapter } from "./integrity-ledger-mock.js";
 import { log } from "./logger.js";
 import { parseAndValidateMessage } from "./message-validator.js";
@@ -10,7 +11,15 @@ import { MongoSensorRepository } from "./repository/mongo-sensor-repository.js";
 const config = loadConfig();
 const metrics = new MetricsCollector();
 const repository = new MongoSensorRepository(config.mongoUri, config.mongoDatabase, config.mongoCollection);
-const ledgerAdapter = new IntegrityLedgerMockAdapter();
+const ledgerAdapter =
+  config.ledgerMode === "ethereum"
+    ? new IntegrityLedgerEthereumAdapter({
+        rpcUrl: config.ethereumRpcUrl,
+        privateKey: config.ethereumPrivateKey,
+        contractAddress: config.integrityRegistryAddress
+      })
+    : new IntegrityLedgerMockAdapter();
+const ledgerStatusLabel = config.ledgerMode === "ethereum" ? "ethereum_committed" : "mock_committed";
 
 const consumer = createMqttConsumer({
   mqttUrl: config.mqttUrl,
@@ -67,7 +76,7 @@ const consumer = createMqttConsumer({
       receivedAt: message.receivedAt,
       recordId: result.recordId,
       hash: result.hash,
-      ledgerStatus: "mock_committed",
+      ledgerStatus: ledgerStatusLabel,
       durationMs: Date.now() - startedAt
     });
   }
@@ -86,7 +95,10 @@ async function bootstrap(): Promise<void> {
     mqttTopicFilter: config.mqttTopicFilter,
     mongoUri: config.mongoUri,
     mongoDatabase: config.mongoDatabase,
-    mongoCollection: config.mongoCollection
+    mongoCollection: config.mongoCollection,
+    ledgerMode: config.ledgerMode,
+    ethereumRpcUrl: config.ethereumRpcUrl,
+    integrityRegistryAddress: config.integrityRegistryAddress
   });
 }
 

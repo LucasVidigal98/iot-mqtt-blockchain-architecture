@@ -9,7 +9,7 @@ interface MongoStoredRecord {
   receivedAt: string;
   hash: string | null;
   processingStatus: ProcessingStatus;
-  ledgerRefMock: string | null;
+  ledgerTxId: string | null;
   processingError: string | null;
   updatedAt: string;
 }
@@ -47,7 +47,7 @@ export class MongoSensorRepository implements SensorRepository {
       receivedAt,
       hash: null,
       processingStatus: "stored",
-      ledgerRefMock: null,
+      ledgerTxId: null,
       processingError: null,
       updatedAt: now
     };
@@ -65,7 +65,7 @@ export class MongoSensorRepository implements SensorRepository {
     update: {
       hash: string;
       processingStatus: ProcessingStatus;
-      ledgerRefMock: string | null;
+      ledgerTxId: string | null;
       processingError: string | null;
       updatedAt: string;
     }
@@ -80,7 +80,7 @@ export class MongoSensorRepository implements SensorRepository {
         $set: {
           hash: update.hash,
           processingStatus: update.processingStatus,
-          ledgerRefMock: update.ledgerRefMock,
+          ledgerTxId: update.ledgerTxId,
           processingError: update.processingError,
           updatedAt: update.updatedAt
         }

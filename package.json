@@ -6,15 +6,19 @@
     "install:shared": "npm --prefix packages/shared install",
     "install:sensors": "npm --prefix apps/sensor-simulator install",
     "install:backend": "npm --prefix apps/backend install",
-    "install:all": "npm run install:shared && npm run install:sensors && npm run install:backend",
+    "install:contracts": "npm --prefix contracts/integrity-registry install",
+    "install:all": "npm run install:shared && npm run install:sensors && npm run install:backend && npm run install:contracts",
     "build:shared": "npm --prefix packages/shared run build",
     "build:sensors": "npm --prefix apps/sensor-simulator run build",
     "build:backend": "npm --prefix apps/backend run build",
-    "build": "npm run build:shared && npm run build:sensors && npm run build:backend",
+    "build:contracts": "npm --prefix contracts/integrity-registry run build",
+    "build": "npm run build:shared && npm run build:sensors && npm run build:backend && npm run build:contracts",
     "dev:sensors": "npm --prefix apps/sensor-simulator run dev",
     "dev:backend": "npm --prefix apps/backend run dev",
     "start:sensors": "npm --prefix apps/sensor-simulator run start",
     "start:backend": "npm --prefix apps/backend run start",
-    "test:backend": "npm --prefix apps/backend run test"
+    "test:backend": "npm --prefix apps/backend run test",
+    "test:contracts": "npm --prefix contracts/integrity-registry run test",
+    "deploy:contracts:local": "npm --prefix contracts/integrity-registry run deploy:local"
   }
 }

@@ -1,0 +1,22 @@
+{
+  "name": "@iot/integrity-registry",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "XDG_CONFIG_HOME=./.xdg-config XDG_CACHE_HOME=./.xdg-cache XDG_DATA_HOME=./.xdg-data hardhat compile",
+    "test": "XDG_CONFIG_HOME=./.xdg-config XDG_CACHE_HOME=./.xdg-cache XDG_DATA_HOME=./.xdg-data hardhat test",
+    "deploy:local": "XDG_CONFIG_HOME=./.xdg-config XDG_CACHE_HOME=./.xdg-cache XDG_DATA_HOME=./.xdg-data hardhat run scripts/deploy.ts --network localhost"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ethers": "^6.15.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^3.1.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.3.0",
+    "hardhat": "^2.26.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
