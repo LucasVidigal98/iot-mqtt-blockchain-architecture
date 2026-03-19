@@ -19,6 +19,7 @@
     "start:backend": "npm --prefix apps/backend run start",
     "test:backend": "npm --prefix apps/backend run test",
     "test:contracts": "npm --prefix contracts/integrity-registry run test",
-    "deploy:contracts:local": "npm --prefix contracts/integrity-registry run deploy:local"
+    "deploy:contracts:local": "npm --prefix contracts/integrity-registry run deploy:local",
+    "experiment:3.7": "node scripts/run-experiment-3.7.mjs"
   }
 }
