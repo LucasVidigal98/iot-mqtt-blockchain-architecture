@@ -17,6 +17,8 @@ A proposta não substitui o banco tradicional por blockchain. Em vez disso, usa 
 
 ## Arquitetura Experimental
 
+![Arquitetura da solução](docs/arquitetura-solucao.jpeg)
+
 ```text
 Sensores simulados (Node.js/TS)
           |
