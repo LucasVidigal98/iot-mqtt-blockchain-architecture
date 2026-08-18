@@ -1,5 +1,7 @@
 # Blockchain como Camada de Segurança em Redes IoT (MQTT + MongoDB + Ethereum)
 
+[Português (Brasil)](README.md) | [English (US)](README.en-US.md)
+
 Projeto experimental desenvolvido no contexto de TCC para avaliar o uso de blockchain como camada complementar de integridade e auditoria em uma arquitetura IoT corporativa.
 
 ## Objetivo
